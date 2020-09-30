@@ -1,6 +1,7 @@
 language: java
 jdk:
   - oraclejdk8
+dist: trusty
 before_script: cd Fibo2
 
 script: mvn clean verify
