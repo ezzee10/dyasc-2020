@@ -1,7 +1,5 @@
 language: java
 sudo: false
-install: true
-git:
-  depth: 3
+before_script: cd Fibo2
 
 script: mvn clean verify
