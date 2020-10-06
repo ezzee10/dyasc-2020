@@ -1,0 +1,15 @@
+*.class
+/target/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# archivos de configuracion de Eclipse
+/.settings/
+/.metadata/
+.classpath
+.project
+
+
