@@ -115,6 +115,25 @@ public class TestPuntaje {
 	        Assert.assertEquals(1, partido.obtenerGames(NumeroDeJugador.DOS));
 	    }
 	
+	@Test
+	public void elJugadorConVentajaPierdeLaVentaja() {
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        
+	        Assert.assertEquals(false, partido.tieneVentaja(NumeroDeJugador.DOS));
+	        Assert.assertEquals(false, partido.tieneVentaja(NumeroDeJugador.UNO));
+	        Assert.assertEquals(40, partido.obtenerPuntaje(NumeroDeJugador.DOS));
+	        Assert.assertEquals(40, partido.obtenerPuntaje(NumeroDeJugador.UNO));
+	        Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.DOS));
+	        Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
+	    }
+	
 	
 	
 	

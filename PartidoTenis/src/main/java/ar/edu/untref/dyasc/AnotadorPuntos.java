@@ -7,7 +7,7 @@ public class AnotadorPuntos {
 	
 	public void anotarPunto(Jugador jugQueAnotoPunto, Jugador jAdversario) {
 		if(existeDeuce(jugQueAnotoPunto, jAdversario)) {
-			anotarPuntoEnDeuce(jugQueAnotoPunto);
+			anotarPuntoEnDeuce(jugQueAnotoPunto, jAdversario);
 		}else if(jugQueAnotoPunto.getPuntaje() == 40) {
 			anotaPuntoTeniendo40YNoHayDeuce(jugQueAnotoPunto,jAdversario );
 		}else {
@@ -27,11 +27,13 @@ public class AnotadorPuntos {
 		return resultado;		
 	}
 	
-	public void anotarPuntoEnDeuce(Jugador j) {
-		if(j.getVentaja()) {
-			j.gameGanado();
+	public void anotarPuntoEnDeuce(Jugador jugQueAnoto, Jugador adversario) {
+		if(jugQueAnoto.getVentaja()) {
+			jugQueAnoto.gameGanado();
+		}else if(adversario.getVentaja()) {
+			adversario.setVentaja(false);
 		}else {
-			j.setVentaja(true);
+			jugQueAnoto.setVentaja(true);
 		}
 	}
 
