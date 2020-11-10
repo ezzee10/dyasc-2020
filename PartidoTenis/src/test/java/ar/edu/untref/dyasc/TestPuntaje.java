@@ -19,4 +19,12 @@ public class TestPuntaje {
 		Assert.assertEquals(0, partido.obtenerPuntaje(NumeroDeJugador.DOS));
 	}
 	
+	@Test
+	public void unJugadorUnoAnotaSuPrimerPuntoYsuma15EnElScore() {
+		
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		
+		Assert.assertEquals(15, partido.obtenerPuntaje(NumeroDeJugador.UNO));
+	}
+	
 }
