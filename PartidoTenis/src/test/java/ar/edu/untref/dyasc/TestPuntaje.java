@@ -36,4 +36,15 @@ public class TestPuntaje {
 		Assert.assertEquals(30, partido.obtenerPuntaje(NumeroDeJugador.UNO));
 	}
 	
+	@Test
+	public void elJugadorUnoAnotaTresPuntosYsuma40() {
+		
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		
+		Assert.assertEquals(40, partido.obtenerPuntaje(NumeroDeJugador.UNO));
+		Assert.assertEquals(0, partido.obtenerPuntaje(NumeroDeJugador.DOS));
+	}
+	
 }
