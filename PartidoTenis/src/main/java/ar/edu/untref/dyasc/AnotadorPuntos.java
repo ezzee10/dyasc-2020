@@ -19,6 +19,8 @@ public class AnotadorPuntos {
 	public void anotaPuntoTeniendo40YNoHayDeuce(Jugador jugQueAnotoPunto, Jugador jAdversario) {
 		
 		jugQueAnotoPunto.gameGanado();
+		jugQueAnotoPunto.reiniciarScore();
+		jAdversario.reiniciarScore();
 	}
 	
 	public boolean existeDeuce (Jugador j1, Jugador j2) {
@@ -27,13 +29,15 @@ public class AnotadorPuntos {
 		return resultado;		
 	}
 	
-	public void anotarPuntoEnDeuce(Jugador jugQueAnoto, Jugador adversario) {
-		if(jugQueAnoto.getVentaja()) {
-			jugQueAnoto.gameGanado();
-		}else if(adversario.getVentaja()) {
-			adversario.setVentaja(false);
+	public void anotarPuntoEnDeuce(Jugador jugQueAnotoPunto, Jugador jAdversario) {
+		if(jugQueAnotoPunto.getVentaja()) {
+			jugQueAnotoPunto.gameGanado();
+			jugQueAnotoPunto.reiniciarScore();
+			jAdversario.reiniciarScore();
+		}else if(jAdversario.getVentaja()) {
+			jAdversario.setVentaja(false);
 		}else {
-			jugQueAnoto.setVentaja(true);
+			jugQueAnotoPunto.setVentaja(true);
 		}
 	}
 

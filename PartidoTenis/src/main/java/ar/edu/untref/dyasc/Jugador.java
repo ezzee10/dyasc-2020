@@ -5,6 +5,9 @@ public class Jugador {
 	private int puntaje;
 	private int cantPuntosAnotados;
 	private int games;
+	private int setsGanados;
+	
+
 	private boolean ventaja;
 	
 	public Jugador() {
@@ -42,11 +45,26 @@ public class Jugador {
 		return games;
 	}
 	
+	public void setGamesGanados(int games) {
+		this.games = games;
+	}
+	
 	public void gameGanado() {
 		games++;
+	}
+	
+	public void reiniciarScore() {
 		cantPuntosAnotados = 0;
 		puntaje = 0;
 		ventaja = false;
+	}
+	
+	public int getSetsGanados() {
+		return setsGanados;
+	}
+
+	public void ganoSet() {
+		setsGanados++;
 	}
 	
 

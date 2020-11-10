@@ -7,12 +7,14 @@ public class PartidoTenis{
 	
 	private Map<NumeroDeJugador, Jugador> jugadores = new HashMap<NumeroDeJugador,Jugador>();
 	private AnotadorPuntos anotador;
+	private ControladorDeSets controladorSets;
 	
 	public PartidoTenis() {
 		
 		jugadores.put(NumeroDeJugador.UNO, new Jugador());
 		jugadores.put(NumeroDeJugador.DOS, new Jugador());
 		anotador = new AnotadorPuntos();
+		controladorSets = new ControladorDeSets();
 	}
 
 	public int obtenerPuntaje(NumeroDeJugador numero) {
@@ -35,6 +37,10 @@ public class PartidoTenis{
 	    }
 		
 		anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
+		
+		if(jugadorQueAnoto.getGamesGanados() == 6) {
+			controladorSets.anotarSets(jugadorQueAnoto);
+		}
 			
 	}
 	
@@ -64,6 +70,13 @@ public class PartidoTenis{
 		Jugador j = jugadores.get(numero);
 		
 		return j.getVentaja();
+	}
+
+	public int obtenerSets(NumeroDeJugador uno) {
+		
+		Jugador j = jugadores.get(uno);
+		
+		return j.getSetsGanados();
 	}
 
 }

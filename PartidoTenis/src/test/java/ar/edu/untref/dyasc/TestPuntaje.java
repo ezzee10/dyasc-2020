@@ -134,6 +134,56 @@ public class TestPuntaje {
 	        Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
 	    }
 	
+	@Test
+	public void elJugadorConVentajaPierdeLaVentajaYlaRecuperaYganaGame() {
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.UNO);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        partido.anotarPunto(NumeroDeJugador.DOS);
+	        
+	        Assert.assertEquals(false, partido.tieneVentaja(NumeroDeJugador.DOS));
+	        Assert.assertEquals(false, partido.tieneVentaja(NumeroDeJugador.UNO));
+	        Assert.assertEquals(0, partido.obtenerPuntaje(NumeroDeJugador.DOS));
+	        Assert.assertEquals(0, partido.obtenerPuntaje(NumeroDeJugador.UNO));
+	        Assert.assertEquals(1, partido.obtenerGames(NumeroDeJugador.DOS));
+	        Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
+	    }
+	
+	@Test
+	public void unJugadorGana2Games() {
+		
+			for(int i=0; i<8; i++) {
+				partido.anotarPunto(NumeroDeJugador.UNO);
+			}
+
+	        Assert.assertEquals(false, partido.tieneVentaja(NumeroDeJugador.UNO));
+	        Assert.assertEquals(0, partido.obtenerPuntaje(NumeroDeJugador.UNO));
+	        Assert.assertEquals(2, partido.obtenerGames(NumeroDeJugador.UNO));
+	 }
+	
+	@Test
+	public void unJugadorGana6GamesYGanaUnset() {
+		
+			for(int i=0; i<24; i++) {
+				partido.anotarPunto(NumeroDeJugador.UNO);
+			}
+
+			Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.UNO));
+			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
+	 }
+	
+	
+
+	
+	
+	
+	
 	
 	
 	
