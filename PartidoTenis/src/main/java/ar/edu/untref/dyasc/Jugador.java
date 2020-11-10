@@ -38,17 +38,15 @@ public class Jugador {
 		return cantPuntosAnotados;
 	}
 	
-	public void reiniciarScore() {
-		cantPuntosAnotados = 0;
-		puntaje = 0;
-	}
-	
 	public int getGamesGanados() {
 		return games;
 	}
 	
 	public void gameGanado() {
 		games++;
+		cantPuntosAnotados = 0;
+		puntaje = 0;
+		ventaja = false;
 	}
 	
 

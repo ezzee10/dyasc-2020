@@ -17,21 +17,22 @@ public class AnotadorPuntos {
 	}
 	
 	public void anotaPuntoTeniendo40YNoHayDeuce(Jugador jugQueAnotoPunto, Jugador jAdversario) {
+		
 		jugQueAnotoPunto.gameGanado();
-		jugQueAnotoPunto.reiniciarScore();
-		jAdversario.reiniciarScore();
 	}
 	
 	public boolean existeDeuce (Jugador j1, Jugador j2) {
 		
 		boolean resultado = (j1.getPuntaje() == 40 && j2.getPuntaje() == 40) ? true : false;
-		
-		return resultado;
-			
+		return resultado;		
 	}
 	
 	public void anotarPuntoEnDeuce(Jugador j) {
-		j.setVentaja(true);
+		if(j.getVentaja()) {
+			j.gameGanado();
+		}else {
+			j.setVentaja(true);
+		}
 	}
 
 }
