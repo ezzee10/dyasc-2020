@@ -26,6 +26,8 @@ public class PartidoTenis{
 			puntosAnotadosJ1 = 0;
 		}else if(uno == NumeroDeJugador.UNO) {
 			puntosAnotadosJ1 ++;
+		}else if(puntosAnotadosJ2 == 3){
+			puntosAnotadosJ2 = 0;
 		}else {
 			puntosAnotadosJ2 ++;
 		}
