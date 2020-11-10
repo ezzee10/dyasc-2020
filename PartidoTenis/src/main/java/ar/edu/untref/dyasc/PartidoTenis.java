@@ -1,43 +1,70 @@
 package ar.edu.untref.dyasc;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class PartidoTenis{
 	
-	private int puntosAnotadosJ1;
-	private int puntosAnotadosJ2;
-	private int puntajes[] = {0,15,30,40};
+	private Map<NumeroDeJugador, Jugador> jugadores = new HashMap<NumeroDeJugador,Jugador>();
+	private AnotadorPuntos anotador;
 	
 	public PartidoTenis() {
-		this.puntosAnotadosJ1 = 0;
-		this.puntosAnotadosJ2 = 0;
+		
+		jugadores.put(NumeroDeJugador.UNO, new Jugador());
+		jugadores.put(NumeroDeJugador.DOS, new Jugador());
+		anotador = new AnotadorPuntos();
 	}
 
 	public int obtenerPuntaje(NumeroDeJugador numero) {
 		
-		if(numero == NumeroDeJugador.UNO) {
-			return puntajes[puntosAnotadosJ1];
-		}else {
-			return puntajes[puntosAnotadosJ2];
-		}
+		Jugador j = jugadores.get(numero);
+		
+		return j.getPuntaje();
+		 
 	}
 
-	public void anotarPunto(NumeroDeJugador uno) {
+	public void anotarPunto(NumeroDeJugador numero) {
 		
-		if(puntosAnotadosJ1 == 3) {
-			puntosAnotadosJ1 = 0;
-		}else if(uno == NumeroDeJugador.UNO) {
-			puntosAnotadosJ1 ++;
-		}else if(puntosAnotadosJ2 == 3){
-			puntosAnotadosJ2 = 0;
-		}else {
-			puntosAnotadosJ2 ++;
-		}
+		Jugador jugadorQueAnoto = jugadores.get(numero);
+		Jugador jugadorAdversario = null;
 		
-	}
-
-	public int obtenerGames(NumeroDeJugador uno) {
+	    for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
+	        if (jugador.getKey() != numero) {
+	            jugadorAdversario = jugador.getValue();
+	        }
+	    }
 		
-		return 1;
+		anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
+			
 	}
 	
+	public boolean existeDeuce () {
+		
+		boolean resultado = true;
+		
+		for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
+	        if (jugador.getValue().getPuntaje() != 40) {
+	        	resultado = false;
+	        }
+	    }
+		
+		return resultado;
+			
+	}
+
+	public int obtenerGames(NumeroDeJugador numero) {
+		
+		Jugador j = jugadores.get(numero);
+		
+		return j.getGamesGanados();
+	}
+
+	public boolean tieneVentaja(NumeroDeJugador numero) {
+		
+		Jugador j = jugadores.get(numero);
+		
+		return j.getVentaja();
+	}
 
 }
