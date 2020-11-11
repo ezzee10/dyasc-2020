@@ -75,6 +75,11 @@ public class PartidoTenis{
 		
 		return j.getPuntosTieBreak();
 	}
+
+	public Object obtenerGanador(NumeroDeJugador uno) {
+		// TODO Auto-generated method stub
+		return NumeroDeJugador.UNO;
+	}
 	
 	
 

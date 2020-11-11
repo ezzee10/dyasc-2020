@@ -506,6 +506,33 @@ public class TestPuntaje {
 			
 	}
 	
+	@Test
+	public void jugadorGana3SetsSeguidosYGanaElPartido() {
+		
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.UNO);  //1SET
+		}
+	
+	
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.UNO); //2 SETS
+		}
+		
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.UNO); //3 SETS
+		}
+		
+		
+		Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.DOS));
+		Assert.assertEquals(3, partido.obtenerSets(NumeroDeJugador.UNO));
+		Assert.assertEquals(NumeroDeJugador.UNO, partido.obtenerGanador(NumeroDeJugador.UNO));
+
+			
+	}
+	
+	
+	
+	
 	
 	
 	
