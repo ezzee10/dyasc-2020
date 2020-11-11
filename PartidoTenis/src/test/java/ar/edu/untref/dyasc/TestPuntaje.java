@@ -209,7 +209,7 @@ public class TestPuntaje {
 	 }
 	
 	@Test
-	public void ambosJugadoresGanan6GamesYVanATieBreak() {
+	public void ambosJugadoresGanan6GamesYVanATieBreakYElJugadorUnoAnotaUnTanto() {
 		
 			for(int i=0; i<20; i++) {
 				partido.anotarPunto(NumeroDeJugador.DOS);
@@ -238,6 +238,8 @@ public class TestPuntaje {
 			Assert.assertEquals(1, partido.obtenerPuntajeTieBreak(NumeroDeJugador.UNO));
 			
 	 }
+	
+
 	
 	
 	
