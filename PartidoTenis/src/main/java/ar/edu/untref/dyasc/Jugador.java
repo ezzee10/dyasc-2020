@@ -6,6 +6,7 @@ public class Jugador {
 	private int cantPuntosAnotados;
 	private int games;
 	private int setsGanados;
+	private int puntosTieBreak;
 	
 
 	private boolean ventaja;
@@ -15,6 +16,7 @@ public class Jugador {
 		this.ventaja = false;
 		this.games = 0;
 		this.cantPuntosAnotados = 0;
+		this.puntosTieBreak = 0;
 	}
 	
 	public int getPuntaje() {
@@ -65,6 +67,14 @@ public class Jugador {
 
 	public void ganoSet() {
 		setsGanados++;
+	}
+	
+	public int obtenerTieBreak() {
+		return puntosTieBreak;
+	}
+	
+	public void agregarPuntoTieBreak() {
+		puntosTieBreak++;
 	}
 	
 

@@ -156,7 +156,7 @@ public class TestPuntaje {
 	    }
 	
 	@Test
-	public void unJugadorGana2Games() {
+	public void unJugadorGana6Games() {
 		
 			for(int i=0; i<8; i++) {
 				partido.anotarPunto(NumeroDeJugador.UNO);
@@ -177,6 +177,72 @@ public class TestPuntaje {
 			Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.UNO));
 			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
 	 }
+	
+	@Test
+	public void elJugadorDosGana6GamesYGanaUnset() {
+		
+			for(int i=0; i<24; i++) {
+				partido.anotarPunto(NumeroDeJugador.DOS);
+			}
+			
+			Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.DOS));
+			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.DOS));
+			Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.UNO));
+			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
+	 }
+	
+	@Test
+	public void elJugadorDosGanaDosSetsYElUnoGanaUnSet() {
+		
+			for(int i=0; i<48; i++) {
+				partido.anotarPunto(NumeroDeJugador.DOS);
+			}
+			
+			for(int i=0; i<24; i++) {
+				partido.anotarPunto(NumeroDeJugador.UNO);
+			}
+			
+			Assert.assertEquals(2, partido.obtenerSets(NumeroDeJugador.DOS));
+			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.DOS));
+			Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.UNO));
+			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
+	 }
+	
+	@Test
+	public void ambosJugadoresGanan6GamesYVanATieBreak() {
+		
+			for(int i=0; i<20; i++) {
+				partido.anotarPunto(NumeroDeJugador.DOS);
+			}
+			
+			for(int i=0; i<20; i++) {
+				partido.anotarPunto(NumeroDeJugador.UNO);
+			}
+			
+			partido.anotarPunto(NumeroDeJugador.UNO);
+			partido.anotarPunto(NumeroDeJugador.UNO);
+			partido.anotarPunto(NumeroDeJugador.UNO);
+			partido.anotarPunto(NumeroDeJugador.UNO);
+			partido.anotarPunto(NumeroDeJugador.DOS);
+			partido.anotarPunto(NumeroDeJugador.DOS);
+			partido.anotarPunto(NumeroDeJugador.DOS);
+			partido.anotarPunto(NumeroDeJugador.DOS);
+			
+			partido.anotarPunto(NumeroDeJugador.UNO);
+			
+			
+			Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.DOS));
+			Assert.assertEquals(6, partido.obtenerGames(NumeroDeJugador.DOS));
+			Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.UNO));
+			Assert.assertEquals(6, partido.obtenerGames(NumeroDeJugador.UNO));
+			Assert.assertEquals(1, partido.obtenerPuntajeTieBreak(NumeroDeJugador.UNO));
+			
+	 }
+	
+	
+	
+	
+	
 	
 	
 

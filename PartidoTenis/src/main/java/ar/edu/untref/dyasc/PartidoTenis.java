@@ -39,24 +39,12 @@ public class PartidoTenis{
 		anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
 		
 		if(jugadorQueAnoto.getGamesGanados() == 6) {
-			controladorSets.anotarSets(jugadorQueAnoto);
+			System.out.print("XD");
+			controladorSets.anotarSets(jugadorQueAnoto, jugadorAdversario);
 		}
 			
 	}
 	
-	public boolean existeDeuce () {
-		
-		boolean resultado = true;
-		
-		for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
-	        if (jugador.getValue().getPuntaje() != 40) {
-	        	resultado = false;
-	        }
-	    }
-		
-		return resultado;
-			
-	}
 
 	public int obtenerGames(NumeroDeJugador numero) {
 		
@@ -72,11 +60,17 @@ public class PartidoTenis{
 		return j.getVentaja();
 	}
 
-	public int obtenerSets(NumeroDeJugador uno) {
+	public int obtenerSets(NumeroDeJugador numero) {
 		
-		Jugador j = jugadores.get(uno);
+		Jugador j = jugadores.get(numero);
 		
 		return j.getSetsGanados();
 	}
+	
+	public int obtenerPuntajeTieBreak(NumeroDeJugador numero) {
+		return 1;
+	}
+	
+	
 
 }
