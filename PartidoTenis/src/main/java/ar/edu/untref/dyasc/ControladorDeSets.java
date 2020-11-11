@@ -8,9 +8,9 @@ public class ControladorDeSets {
 			if(existeDiferenciaDeDos(jugadorQueAnota, adversario)) {
 			jugadorQueAnota.ganoSet();
 			jugadorQueAnota.reiniciarScore();
-			jugadorQueAnota.setGamesGanados(0);
+			jugadorQueAnota.reiniciarGamesGanados();
 			adversario.reiniciarScore();
-			adversario.setGamesGanados(0);
+			adversario.reiniciarGamesGanados();
 			 
 		}
 	}
@@ -25,7 +25,16 @@ public class ControladorDeSets {
 
 	
 	public void puntoAnotadoEnTieBreak(Jugador j1) {
+		
 		j1.agregarPuntoTieBreak();
+		
+		if (j1.getPuntosTieBreak() == 7) {
+			j1.ganoSet();
+			j1.reiniciarScore();
+			j1.reiniciarGamesGanados();
+		}
+		
+		
 	}
 	
 	

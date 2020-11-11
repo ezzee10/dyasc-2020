@@ -206,8 +206,9 @@ public class TestPuntaje {
 			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.DOS));
 			Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.UNO));
 			Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
-	 }
-	/*
+	
+	}
+	
 	@Test
 	public void ambosJugadoresGanan6GamesYVanATieBreakYElJugadorUnoAnotaUnTanto() {
 		
@@ -239,7 +240,7 @@ public class TestPuntaje {
 			
 	 }
 	 
-	 */
+	 
 	
 	@Test
 	public void ambosJugadoresGanan6GamesYVanATieBreakYElJugadorUnoAnotaDosTantosYelSegundoUno() {
@@ -276,6 +277,46 @@ public class TestPuntaje {
 			Assert.assertEquals(1, partido.obtenerPuntajeTieBreak(NumeroDeJugador.DOS));
 			
 	 }
+	
+	@Test
+	public void ambosJugadoresGanan6GamesYVanATieBreakYElJugadorUnoLlegaA7TantosYGanaElSet() {
+		
+		for(int i=0; i<20; i++) {
+			partido.anotarPunto(NumeroDeJugador.UNO);
+		}
+	
+	
+		for(int i=0; i<20; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS);
+		}
+		
+		
+		partido.anotarPunto(NumeroDeJugador.DOS); //15
+		partido.anotarPunto(NumeroDeJugador.DOS); //30
+		partido.anotarPunto(NumeroDeJugador.DOS); //40
+		partido.anotarPunto(NumeroDeJugador.DOS); //0
+		partido.anotarPunto(NumeroDeJugador.UNO); //15
+		partido.anotarPunto(NumeroDeJugador.UNO); //30	
+		partido.anotarPunto(NumeroDeJugador.UNO); //40	
+		partido.anotarPunto(NumeroDeJugador.UNO); //0
+		
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		partido.anotarPunto(NumeroDeJugador.UNO);
+		//partido.anotarPunto(NumeroDeJugador.DOS);
+		
+		Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.DOS));
+		Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.UNO));
+		//Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.DOS));
+		Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
+		Assert.assertEquals(0, partido.obtenerPuntajeTieBreak(NumeroDeJugador.UNO));
+		Assert.assertEquals(0, partido.obtenerPuntajeTieBreak(NumeroDeJugador.DOS));
+		
+	}
 	
 
 	

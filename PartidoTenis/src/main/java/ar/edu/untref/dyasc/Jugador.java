@@ -47,8 +47,8 @@ public class Jugador {
 		return games;
 	}
 	
-	public void setGamesGanados(int games) {
-		this.games = games;
+	public void reiniciarGamesGanados() {
+		games = 0;
 	}
 	
 	public void gameGanado() {
@@ -59,6 +59,7 @@ public class Jugador {
 		cantPuntosAnotados = 0;
 		puntaje = 0;
 		ventaja = false;
+		puntosTieBreak = 0;
 	}
 	
 	public int getSetsGanados() {
