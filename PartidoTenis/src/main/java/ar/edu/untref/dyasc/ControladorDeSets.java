@@ -28,7 +28,7 @@ public class ControladorDeSets {
 		
 		j1.agregarPuntoTieBreak();
 		
-		if (j1.getPuntosTieBreak() == 7) {
+		if (j1.getPuntosTieBreak() >= 7 && (j1.getPuntosTieBreak() - j2.getPuntosTieBreak() >= 2)) {
 			j1.ganoSet();
 			j2.reiniciarScore();
 			j1.reiniciarScore();

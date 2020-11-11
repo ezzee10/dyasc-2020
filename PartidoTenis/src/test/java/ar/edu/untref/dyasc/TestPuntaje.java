@@ -359,6 +359,108 @@ public class TestPuntaje {
 		
 	}
 	
+	@Test
+	public void unJugadorGanaUnSetLuegoVanATieBreakYTerminan7a5() {
+		
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.UNO); //GANA UN SET
+		}
+		
+		for(int i=0; i<20; i++) {
+			partido.anotarPunto(NumeroDeJugador.UNO);  //5 GAMES 
+		}
+	
+	
+		for(int i=0; i<20; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS); //5 GAMES
+		}
+		
+
+		partido.anotarPunto(NumeroDeJugador.DOS); //15
+		partido.anotarPunto(NumeroDeJugador.DOS); //30
+		partido.anotarPunto(NumeroDeJugador.DOS); //40
+		partido.anotarPunto(NumeroDeJugador.DOS); //0          
+		partido.anotarPunto(NumeroDeJugador.UNO); //15
+		partido.anotarPunto(NumeroDeJugador.UNO); //30	
+		partido.anotarPunto(NumeroDeJugador.UNO); //40	
+		partido.anotarPunto(NumeroDeJugador.UNO); //0           6 a 6
+		
+		
+		partido.anotarPunto(NumeroDeJugador.DOS); //1
+		partido.anotarPunto(NumeroDeJugador.DOS); //2
+		partido.anotarPunto(NumeroDeJugador.UNO); //1
+		partido.anotarPunto(NumeroDeJugador.UNO); //2	
+		partido.anotarPunto(NumeroDeJugador.UNO); //3	
+		partido.anotarPunto(NumeroDeJugador.DOS); //3
+		partido.anotarPunto(NumeroDeJugador.DOS); //4
+		partido.anotarPunto(NumeroDeJugador.UNO); //4
+		partido.anotarPunto(NumeroDeJugador.UNO); //5
+		partido.anotarPunto(NumeroDeJugador.DOS); //5
+		partido.anotarPunto(NumeroDeJugador.DOS); //6
+		partido.anotarPunto(NumeroDeJugador.DOS); //7          7 a 5 POR LO TANTO GANA EL GAME Y VAN 1 A 1 EN SETS
+		
+		partido.anotarPunto(NumeroDeJugador.UNO); //15
+		partido.anotarPunto(NumeroDeJugador.DOS); //15         EN EL TERCER SET VAN 15 A 15 
+		
+		
+		Assert.assertEquals(15, partido.obtenerPuntaje(NumeroDeJugador.DOS));
+		Assert.assertEquals(15, partido.obtenerPuntaje(NumeroDeJugador.UNO));
+		Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.DOS));
+		Assert.assertEquals(1, partido.obtenerSets(NumeroDeJugador.UNO));
+		Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.DOS));
+		Assert.assertEquals(0, partido.obtenerGames(NumeroDeJugador.UNO));
+		Assert.assertEquals(0, partido.obtenerPuntajeTieBreak(NumeroDeJugador.UNO));
+		Assert.assertEquals(0, partido.obtenerPuntajeTieBreak(NumeroDeJugador.DOS));
+	}
+	
+	@Test
+	public void enTieBreakambosLlevan6PuntosYUnJugadorAnotaUnPuntoYNoGanaDebidoADiferenciaDe2() {
+		
+		for(int i=0; i<20; i++) {
+			partido.anotarPunto(NumeroDeJugador.UNO);  //5 GAMES 
+		}
+	
+	
+		for(int i=0; i<20; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS); //5 GAMES
+		}
+		
+		partido.anotarPunto(NumeroDeJugador.DOS); //15
+		partido.anotarPunto(NumeroDeJugador.DOS); //30
+		partido.anotarPunto(NumeroDeJugador.DOS); //40
+		partido.anotarPunto(NumeroDeJugador.DOS); //0          
+		partido.anotarPunto(NumeroDeJugador.UNO); //15
+		partido.anotarPunto(NumeroDeJugador.UNO); //30	
+		partido.anotarPunto(NumeroDeJugador.UNO); //40	
+		partido.anotarPunto(NumeroDeJugador.UNO); //0           6 a 6
+		
+		partido.anotarPunto(NumeroDeJugador.DOS); //1
+		partido.anotarPunto(NumeroDeJugador.DOS); //2
+		partido.anotarPunto(NumeroDeJugador.UNO); //1
+		partido.anotarPunto(NumeroDeJugador.UNO); //2	
+		partido.anotarPunto(NumeroDeJugador.UNO); //3	
+		partido.anotarPunto(NumeroDeJugador.DOS); //3
+		partido.anotarPunto(NumeroDeJugador.DOS); //4
+		partido.anotarPunto(NumeroDeJugador.UNO); //4
+		partido.anotarPunto(NumeroDeJugador.UNO); //5
+		partido.anotarPunto(NumeroDeJugador.DOS); //5
+		partido.anotarPunto(NumeroDeJugador.DOS); //6
+		partido.anotarPunto(NumeroDeJugador.UNO); //6 
+		partido.anotarPunto(NumeroDeJugador.UNO); //7
+		
+		Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.DOS));
+		Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.UNO));
+		Assert.assertEquals(6, partido.obtenerGames(NumeroDeJugador.DOS));
+		Assert.assertEquals(6, partido.obtenerGames(NumeroDeJugador.UNO));
+		Assert.assertEquals(7, partido.obtenerPuntajeTieBreak(NumeroDeJugador.UNO));
+		Assert.assertEquals(6, partido.obtenerPuntajeTieBreak(NumeroDeJugador.DOS));
+		
+		
+		
+		
+		
+	}
+	
 	
 
 	
