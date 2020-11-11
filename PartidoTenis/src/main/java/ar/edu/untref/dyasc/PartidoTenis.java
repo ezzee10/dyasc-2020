@@ -27,24 +27,26 @@ public class PartidoTenis{
 
 	public void anotarPunto(NumeroDeJugador numero) {
 
-		Jugador jugadorQueAnoto = jugadores.get(numero);
-		Jugador jugadorAdversario = null;
+		if (obtenerGanador() == null) {
+			Jugador jugadorQueAnoto = jugadores.get(numero);
+			Jugador jugadorAdversario = null;
 
-		for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
-			if (jugador.getKey() != numero) {
-				jugadorAdversario = jugador.getValue();
+			for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
+				if (jugador.getKey() != numero) {
+					jugadorAdversario = jugador.getValue();
+				}
+			}
+
+			if (controladorSets.existeTieBreak(jugadorQueAnoto, jugadorAdversario)) {
+				controladorSets.puntoAnotadoEnTieBreak(jugadorQueAnoto, jugadorAdversario);
+			} else {
+				anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
+
+				if (jugadorQueAnoto.getGamesGanados() == 6) {
+					controladorSets.anotarSetsSinTieBreak(jugadorQueAnoto, jugadorAdversario);
+				}
 			}
 		}
-
-		if (controladorSets.existeTieBreak(jugadorQueAnoto, jugadorAdversario)) {
-			controladorSets.puntoAnotadoEnTieBreak(jugadorQueAnoto, jugadorAdversario);
-		} else {
-			anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
-
-			if (jugadorQueAnoto.getGamesGanados() == 6) {
-				controladorSets.anotarSetsSinTieBreak(jugadorQueAnoto, jugadorAdversario);
-			}
-		}  	
 	}
 	
 
@@ -76,9 +78,14 @@ public class PartidoTenis{
 		return j.getPuntosTieBreak();
 	}
 
-	public Object obtenerGanador(NumeroDeJugador uno) {
-		// TODO Auto-generated method stub
-		return NumeroDeJugador.UNO;
+	public NumeroDeJugador obtenerGanador() {
+		
+		for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
+			if (jugador.getValue().esGanador()) {
+				return jugador.getKey();
+			}
+		}
+		return null;
 	}
 	
 	

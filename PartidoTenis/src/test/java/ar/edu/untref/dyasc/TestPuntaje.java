@@ -525,10 +525,36 @@ public class TestPuntaje {
 		
 		Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.DOS));
 		Assert.assertEquals(3, partido.obtenerSets(NumeroDeJugador.UNO));
-		Assert.assertEquals(NumeroDeJugador.UNO, partido.obtenerGanador(NumeroDeJugador.UNO));
+		Assert.assertEquals(NumeroDeJugador.UNO, partido.obtenerGanador());
 
 			
 	}
+	
+	@Test
+	public void jugadorDOSGana3SetsSeguidosYGanaElPartido() {
+		
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS);  //1SET
+		}
+	
+	
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS); //2 SETS
+		}
+		
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS); //3 SETS
+		}
+		
+		
+		Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.UNO));
+		Assert.assertEquals(3, partido.obtenerSets(NumeroDeJugador.DOS));
+		Assert.assertEquals(NumeroDeJugador.DOS, partido.obtenerGanador());
+
+			
+	}
+	
+	
 	
 	
 	
