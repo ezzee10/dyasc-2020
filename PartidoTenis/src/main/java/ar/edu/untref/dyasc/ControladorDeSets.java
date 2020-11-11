@@ -24,13 +24,15 @@ public class ControladorDeSets {
 	}
 
 	
-	public void puntoAnotadoEnTieBreak(Jugador j1) {
+	public void puntoAnotadoEnTieBreak(Jugador j1, Jugador j2) {
 		
 		j1.agregarPuntoTieBreak();
 		
 		if (j1.getPuntosTieBreak() == 7) {
 			j1.ganoSet();
+			j2.reiniciarScore();
 			j1.reiniciarScore();
+			j2.reiniciarGamesGanados();
 			j1.reiniciarGamesGanados();
 		}
 		

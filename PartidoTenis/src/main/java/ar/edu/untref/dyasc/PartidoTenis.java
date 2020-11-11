@@ -37,7 +37,7 @@ public class PartidoTenis{
 		}
 
 		if (controladorSets.existeTieBreak(jugadorQueAnoto, jugadorAdversario)) {
-			controladorSets.puntoAnotadoEnTieBreak(jugadorQueAnoto);
+			controladorSets.puntoAnotadoEnTieBreak(jugadorQueAnoto, jugadorAdversario);
 		} else {
 			anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
 
