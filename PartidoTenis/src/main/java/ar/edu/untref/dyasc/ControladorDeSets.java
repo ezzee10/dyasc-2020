@@ -2,15 +2,10 @@ package ar.edu.untref.dyasc;
 
 public class ControladorDeSets {
 	
-
-	public void anotarSets(Jugador jugadorQueAnota, Jugador adversario) {
-		
-		if(existeTieBreak(jugadorQueAnota, adversario)) {
-			puntoAnotadoEnTieBreak(jugadorQueAnota);
-			System.out.println("Entro alguna vez aca?");
-		}else if(existeDiferenciaDeDos(jugadorQueAnota, adversario)) {
-			System.out.println(jugadorQueAnota.getGamesGanados());
-			System.out.println(adversario.getGamesGanados());
+	
+	public void anotarSetsSinTieBreak(Jugador jugadorQueAnota, Jugador adversario) {
+					
+			if(existeDiferenciaDeDos(jugadorQueAnota, adversario)) {
 			jugadorQueAnota.ganoSet();
 			jugadorQueAnota.reiniciarScore();
 			jugadorQueAnota.setGamesGanados(0);
@@ -32,6 +27,7 @@ public class ControladorDeSets {
 	public void puntoAnotadoEnTieBreak(Jugador j1) {
 		j1.agregarPuntoTieBreak();
 	}
+	
 	
 	public boolean existeDiferenciaDeDos(Jugador j1, Jugador j2) {
 		

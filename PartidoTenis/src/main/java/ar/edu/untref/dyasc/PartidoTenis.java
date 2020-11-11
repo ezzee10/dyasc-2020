@@ -26,25 +26,28 @@ public class PartidoTenis{
 	}
 
 	public void anotarPunto(NumeroDeJugador numero) {
-		
+
 		Jugador jugadorQueAnoto = jugadores.get(numero);
 		Jugador jugadorAdversario = null;
-		
-	    for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
-	        if (jugador.getKey() != numero) {
-	            jugadorAdversario = jugador.getValue();
-	        }
-	    }
-		
-		anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
-		
-		if(jugadorQueAnoto.getGamesGanados() == 6) {
-			System.out.print("XD");
-			controladorSets.anotarSets(jugadorQueAnoto, jugadorAdversario);
+
+		for (Map.Entry<NumeroDeJugador, Jugador> jugador : jugadores.entrySet()) {
+			if (jugador.getKey() != numero) {
+				jugadorAdversario = jugador.getValue();
+			}
 		}
-			
+
+		if (controladorSets.existeTieBreak(jugadorQueAnoto, jugadorAdversario)) {
+			controladorSets.puntoAnotadoEnTieBreak(jugadorQueAnoto);
+		} else {
+			anotador.anotarPunto(jugadorQueAnoto, jugadorAdversario);
+
+			if (jugadorQueAnoto.getGamesGanados() == 6) {
+				controladorSets.anotarSetsSinTieBreak(jugadorQueAnoto, jugadorAdversario);
+			}
+		}  	
 	}
 	
+
 
 	public int obtenerGames(NumeroDeJugador numero) {
 		
@@ -68,7 +71,9 @@ public class PartidoTenis{
 	}
 	
 	public int obtenerPuntajeTieBreak(NumeroDeJugador numero) {
-		return 1;
+		Jugador j = jugadores.get(numero);
+		
+		return j.getPuntosTieBreak();
 	}
 	
 	

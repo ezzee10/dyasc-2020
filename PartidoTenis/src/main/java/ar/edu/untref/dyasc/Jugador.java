@@ -69,7 +69,7 @@ public class Jugador {
 		setsGanados++;
 	}
 	
-	public int obtenerTieBreak() {
+	public int getPuntosTieBreak() {
 		return puntosTieBreak;
 	}
 	
