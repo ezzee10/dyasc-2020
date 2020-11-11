@@ -46,6 +46,8 @@ public class PartidoTenis{
 					controladorSets.anotarSetsSinTieBreak(jugadorQueAnoto, jugadorAdversario);
 				}
 			}
+		}else {
+			throw new IllegalArgumentException("Ya hay un ganador no se puede anotar más puntos");
 		}
 	}
 	

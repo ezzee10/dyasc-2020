@@ -555,6 +555,32 @@ public class TestPuntaje {
 	}
 	
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void seIntentaAgregarMasPuntosLuegoDePartidoFinalizadoYseAdvierte() {
+		
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS);  //1SET
+		}
+	
+	
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS); //2 SETS
+		}
+		
+		for(int i=0; i<24; i++) {
+			partido.anotarPunto(NumeroDeJugador.DOS); //3 SETS
+		}
+		
+		partido.anotarPunto(NumeroDeJugador.DOS); //ANOTAR PUNTO UNA VEZ QUE HAY UN GANADOR
+	
+		
+		Assert.assertEquals(0, partido.obtenerSets(NumeroDeJugador.UNO));
+		Assert.assertEquals(3, partido.obtenerSets(NumeroDeJugador.DOS));
+		Assert.assertEquals(NumeroDeJugador.DOS, partido.obtenerGanador());
+
+			
+	}
+		
 	
 	
 	
