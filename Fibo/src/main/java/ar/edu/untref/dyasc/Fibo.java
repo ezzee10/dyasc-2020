@@ -5,7 +5,7 @@ public class Fibo {
 	public String serieFibonacci(int cantidad) {
 			
 				if(cantidad <= 0) {
-					return "La cantidad de terminos debe ser positiva y mayor a 0";
+					return "La cantidad de terminos debe ser positiva y mayor a 0.";
 				}
 				
 				String cadena = "fibo<" +  cantidad + ">:";
