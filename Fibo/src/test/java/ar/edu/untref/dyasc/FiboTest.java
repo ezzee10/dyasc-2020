@@ -13,7 +13,7 @@ public class FiboTest
 		
 		Fibo f = new Fibo();
 		String valorEsperado = "fibo<6>: 0 1 1 2 3 5";
-		Assert.assertEquals(valorEsperado, f.serieFibonacci(6));
+		Assert.assertEquals(x, f.serieFibonacci(6));
 		
 	}
 	
