@@ -1,7 +1,7 @@
 package ar.edu.untref.dyasc;
 public class Fibo2 {
 	
-	//public int[] generarSerieFibonacci(int cantidad) {
+	public int[] generarSerieFibonacci(int cantidad) {
 		
 		if(cantidad <= 0) {
 			throw new Error("La cantidad de terminos debe ser positiva y mayor a 0");
@@ -23,7 +23,7 @@ public class Fibo2 {
 		return resultado;
 }
 	
-	//public String orientacionYdireccion(int[]serie, boolean horizontal, boolean directo) {
+	public String orientacionYdireccion(int[]serie, boolean horizontal, boolean directo) {
 		
 	
 		String cadena = "fibo<" +  serie.length + ">:";
