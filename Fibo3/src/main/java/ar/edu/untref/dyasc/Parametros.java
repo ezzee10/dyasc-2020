@@ -1,9 +1,9 @@
 package ar.edu.untref.dyasc;
 public class Parametros {
 	
-	private String[] args;
-	private int cantidad;
-	private String nombreArchivo;
+	//private String[] args;
+	//private int cantidad;
+	//private String nombreArchivo;
 	
 	public Parametros (String[] args) {
 		this.args = args;
