@@ -1,7 +1,7 @@
 package ar.edu.untref.dyasc;
 public class MainFibo2 {
 	
-	public static void main(String args[]) {
+	//public static void main(String args[]) {
 		
 		boolean horizontal;
 		boolean directo;
