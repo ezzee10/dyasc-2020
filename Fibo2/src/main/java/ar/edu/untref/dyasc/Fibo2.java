@@ -1,9 +1,9 @@
 package ar.edu.untref.dyasc;
 public class Fibo2 {
 	
-	public int[] generarSerieFibonacci(int cantidad) {
+	//public int[] generarSerieFibonacci(int cantidad) {
 		
-		if(cantidad <= 0) {
+		//if(cantidad <= 0) {
 			throw new Error("La cantidad de terminos debe ser positiva y mayor a 0");
 		}
 		
